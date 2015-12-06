@@ -1,0 +1,57 @@
+{
+  "name": "Ride",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "time": {
+      "type": "date",
+      "required": true
+    },
+    "seat_number": {
+      "type": "number",
+      "required": true
+    },
+    "beforeArrive": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "memberId"
+    },
+    "joins": {
+      "type": "hasMany",
+      "model": "Join",
+      "foreignKey": "rideId"
+    },
+    "pickup": {
+      "type": "belongsTo",
+      "model": "pickup",
+      "foreignKey": "pickup_name"
+    },
+    "destination": {
+      "type": "belongsTo",
+      "model": "destination",
+      "foreignKey": "destination_name"
+    },
+    "own": {
+      "type": "belongsTo",
+      "model": "Own",
+      "foreignKey": "ownId"
+    },
+    "vehicle": {
+      "type": "belongsTo",
+      "model": "Vehicle",
+      "foreignKey": "license_number"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

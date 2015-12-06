@@ -1,0 +1,39 @@
+{
+  "name": "request",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "time": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "memberId": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "memberId"
+    },
+    "joins": {
+      "type": "hasOne",
+      "model": "Join",
+      "foreignKey": "requestId"
+    },
+    "destination": {
+      "type": "belongsTo",
+      "model": "destination",
+      "foreignKey": "destination_name"
+    },
+    "pickup": {
+      "type": "belongsTo",
+      "model": "pickup",
+      "foreignKey": "pickup_name"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

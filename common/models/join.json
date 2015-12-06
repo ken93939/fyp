@@ -1,0 +1,29 @@
+{
+  "name": "Join",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "requests": {
+      "type": "hasOne",
+      "model": "request",
+      "foreignKey": "joinId"
+    },
+    "ride": {
+      "type": "belongsTo",
+      "model": "Ride",
+      "foreignKey": "rideId"
+    },
+    "icon": {
+      "type": "belongsTo",
+      "model": "Icon",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

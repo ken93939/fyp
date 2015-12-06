@@ -1,0 +1,30 @@
+{
+  "name": "pickup",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "location_name": {
+      "type": "string",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "requests": {
+      "type": "hasMany",
+      "model": "request",
+      "foreignKey": "pickup_name"
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "Ride",
+      "foreignKey": "pickup_name"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,85 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Member": {
+    "dataSource": "mySQL",
+    "public": true,
+    "acls": [
+      {
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW",
+        "property": "register"
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW",
+        "property": "fuck"
+      }
+    ]
+  },
+  "Vehicle": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "Ride": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "Own": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "Join": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "request": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "pickup": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "destination": {
+    "dataSource": "mySQL",
+    "public": true
+  },
+  "Icon": {
+    "dataSource": "mySQL",
+    "public": true
+  }
+}

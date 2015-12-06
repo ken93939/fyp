@@ -1,0 +1,30 @@
+{
+  "name": "destination",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "location_name": {
+      "type": "string",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "requests": {
+      "type": "hasMany",
+      "model": "request",
+      "foreignKey": "destination_name"
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "Ride",
+      "foreignKey": "destination_name"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

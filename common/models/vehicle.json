@@ -1,0 +1,36 @@
+{
+  "name": "Vehicle",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "license_number": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "color": {
+      "type": "string"
+    },
+    "maker": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "owns": {
+      "type": "hasMany",
+      "model": "Own",
+      "foreignKey": "license_number"
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "Ride",
+      "foreignKey": "license_number"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

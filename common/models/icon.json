@@ -1,0 +1,24 @@
+{
+  "name": "Icon",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "match_icon": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "joins": {
+      "type": "hasMany",
+      "model": "Join",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

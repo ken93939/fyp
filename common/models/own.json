@@ -1,0 +1,29 @@
+{
+  "name": "Own",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "memberId"
+    },
+    "vehicle": {
+      "type": "belongsTo",
+      "model": "Vehicle",
+      "foreignKey": "license_number"
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "Ride",
+      "foreignKey": "ownId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Member",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number": {
+      "type": "number",
+      "required": true
+    },
+    "gender": {
+      "type": "string",
+      "required": true
+    },
+    "gender_preference": {
+      "type": "string",
+      "required": true
+    },
+    "authorized": {
+      "type": "string",
+      "required": true
+    },
+    "isDriver": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rides": {
+      "type": "hasMany",
+      "model": "Ride",
+      "foreignKey": "memberId"
+    },
+    "owns": {
+      "type": "hasMany",
+      "model": "Own",
+      "foreignKey": "memberId"
+    },
+    "requests": {
+      "type": "hasMany",
+      "model": "request",
+      "foreignKey": "memberId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
