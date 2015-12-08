@@ -1,6 +1,6 @@
 var path = require('path');
 var app = require(path.resolve(__dirname, '../../server/server'));
-
+var loopback=require('loopback');
 
 module.exports = function(Member) {
 	Member.register=function(idk,cb){
@@ -91,8 +91,57 @@ module.exports = function(Member) {
 		catch(err){
 			console.log(err);
 		}
-	})
+	});
 
+	Member.resetPassword=function(idk,cb){
+		User.resetPassword({email: idk.email},function(err){
+			if(err){
+				console.log(err);
+				cb(err,null);
+			}
+			cb(null,"Success");
+		});
+
+	};
+
+	Member.updateToken=function(idk,cb){
+		try{
+			var ctx=loopback.getCurrentContext();
+			var currentUser = ctx && ctx.get('currentUser');
+			console.log(idk.deviceToken);
+			currentUser.updateAttribute("deviceToken",idk.deviceToken,function(err,user){
+				if(err){
+					console.log(err);
+					cb(err,null);
+				}
+				// console.log(user);
+				cb(null,user);
+			});
+		}
+		catch(err){
+			console.log(err);
+			cb(err,null);
+		}
+	}
+
+	Member.remoteMethod(
+		'updateToken',
+		{
+			http: {path: '/updateToken', verb: 'post'},
+			accepts: {arg: 'well', type: 'object', http:{source:'body'}},
+			returns: {arg: 'status', type: 'object'}			
+		}
+	);
+
+
+	Member.remoteMethod(
+		'resetPassword',
+		{
+			http: {path: '/resetPassword', verb: 'post'},
+			accepts: {arg: 'well', type: 'object', http:{source:'body'}},
+			returns: {arg: 'status', type: 'string'}			
+		}
+	);
 
 	Member.remoteMethod(
 		'register',

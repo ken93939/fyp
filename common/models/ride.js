@@ -10,9 +10,11 @@ module.exports = function(Ride) {
 			var accessToken=ctx.get('accessToken');
 			// console.log(accessToken);
 			var currentUser = ctx && ctx.get('currentUser');
-			console.log('currentUser.username: ', currentUser);
+			// console.log('currentUser.username: ', currentUser);
 
-			idk["time"]=new Date();
+			var d=new Date();
+			idk["time"]=new Date(d.getTime()+idk.beforeArrive*60000);
+
 			idk["memberId"]=currentUser.id;
 			if(idk.destination_name=="Hang Hau"){
 	    		idk["pickup_name"]="North Gate";
@@ -30,7 +32,7 @@ module.exports = function(Ride) {
 					Ride.create(idk,function(err,ride){
 						if(err)
 							console.log(err);
-						cb(null,"Success");
+						cb(null,ride);
 					});
 				}
 				else{
@@ -44,13 +46,24 @@ module.exports = function(Ride) {
 		}
 
 	}
+	Ride.push=function(idk,cb){
+
+	}
+	Ride.remoteMethod(
+		'push',
+		{
+			http: {path: '/push', verb: 'post'},
+			accepts: {arg: 'well', type: 'object', http:{source:'body'}},
+			returns: {arg: 'status', type: 'string'}
+		}
+	);
 
 	Ride.remoteMethod(
 		'addRide',
 		{
 			http: {path: '/addRide', verb: 'post'},
 			accepts: {arg: 'well', type: 'object', http:{source:'body'}},
-			returns: {arg: 'status', type: 'string'}
+			returns: {arg: 'status', type: 'object'}
 		}
 	);
 };

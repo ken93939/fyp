@@ -50,6 +50,12 @@
         "principalId": "$everyone",
         "permission": "ALLOW",
         "property": "fuck"
+      },
+      {
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW",
+        "property": "updateToken"
       }
     ]
   },

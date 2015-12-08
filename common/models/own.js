@@ -3,6 +3,7 @@ var app = require(path.resolve(__dirname, '../../server/server'));
 var loopback=require('loopback');
 
 module.exports = function(Own) {
+	//bug
 	Own.getVehicle=function(cb){
 		try{
 			var ctx=loopback.getCurrentContext();
@@ -10,14 +11,18 @@ module.exports = function(Own) {
 			var accessToken=ctx.get('accessToken');
 			// console.log(accessToken);
 			var currentUser = ctx && ctx.get('currentUser');
-			console.log('currentUser.username: ', currentUser);
+			// console.log('currentUser.username: ', currentUser);
 
 			var veh_array=[];
 
-			Own.find({"memberId": currentUser.id},function(err,owns){
+			Own.find({where: {"memberId": currentUser.id}},function(err,owns){
 				if(err)
 					console.log(err)
+
 				owns.forEach(function(eachown,index,array){
+					console.log(currentUser.id);
+					console.log(eachown);
+
 					eachown.vehicle(function(err,veh){
 						if(err)
 							console.log(err);
