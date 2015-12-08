@@ -11,5 +11,22 @@
     "password": "ken24657021",
     "name": "mySQL",
     "connector": "mysql"
+  },
+  "email": {
+    "name": "mail",
+    "defaultForType": "mail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "hkustfyp2016@gmail.com",
+          "pass": "24657021"
+        }
+      }
+    ]
   }
 }

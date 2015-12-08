@@ -35,6 +35,9 @@
   "Member": {
     "dataSource": "mySQL",
     "public": true,
+    "options":{
+      "emailVerificationRequired": true
+    },
     "acls": [
       {
         "principalType": "ROLE",
@@ -80,6 +83,10 @@
   },
   "Icon": {
     "dataSource": "mySQL",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "email",
     "public": true
   }
 }
